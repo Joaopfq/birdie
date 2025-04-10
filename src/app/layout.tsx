@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  weight: "100 900",
 });
-
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
@@ -39,22 +40,21 @@ export default function RootLayout({
           >
             <div className="min-h-screen">
               <Navbar />
+
               <main className="py-8">
+                {/* container to center the content */}
                 <div className="max-w-7xl mx-auto px-4">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div className="hidden lg:block lg:cols-span-3">
-                      sidebar
+                    <div className="hidden lg:block lg:col-span-3">
                     </div>
-                    <div className="lg:col-span-9">
-                      {children}
-                    </div>
+                    <div className="lg:col-span-9">{children}</div>
                   </div>
                 </div>
               </main>
             </div>
           </ThemeProvider>
         </body>
-      </html>
+      </html>      
     </ClerkProvider>
   );
 }
