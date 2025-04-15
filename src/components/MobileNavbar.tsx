@@ -20,7 +20,7 @@ function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isSignedIn } = useAuth();
   const { theme, setTheme } = useTheme();
-  const user = useUser();
+  const { user } = useUser();
 
   return (
     <div className="flex md:hidden items-center space-x-2">
@@ -63,7 +63,7 @@ function MobileNavbar() {
                 </Button>
                 <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
                   <Link href={`/profile/${
-                    user?.user?.username ?? user?.user?.emailAddresses[0].emailAddress.split("@")[0]
+                    user?.username ?? user?.emailAddresses[0].emailAddress.split("@")[0]
                   }`}>
                     <UserIcon className="w-4 h-4" />
                     Profile
