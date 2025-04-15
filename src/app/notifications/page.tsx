@@ -4,6 +4,7 @@ import { getNotifications, markNotificationsAsRead } from '@/actions/notificatio
 import { NotificationsSkeleton } from '@/components/NotificationSkeleton';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useNotificationContext } from '@/context/NotificationContext';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { formatDistanceToNow } from 'date-fns';
 import { HeartIcon, MessageCircleIcon, UserPlusIcon } from 'lucide-react';
@@ -30,6 +31,7 @@ function NotificationsPage() {
 
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [isLoading, setIsLoading] = useState(false);
+  const { markAllAsRead } = useNotificationContext();
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -41,6 +43,7 @@ function NotificationsPage() {
         const unreadIds = data.filter(n => !n.read).map(n => n.id);
         if (unreadIds.length > 0) {
           await markNotificationsAsRead(unreadIds);
+          markAllAsRead();
         }
 
       } catch (error) {
