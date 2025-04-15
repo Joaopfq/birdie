@@ -28,26 +28,31 @@
 ## How to Run Locally
 
 ### 1. Clone the repository
-    ```
-    git clone git@github.com:Joaopfq/birdie.git
-    cd birdie
-    ```
+
+```bash
+git clone git@github.com:Joaopfq/birdie.git
+cd birdie
+```
 
 ### 2. Install dependencies
-    ```
-    npm install
-    ```
+
+```bash
+npm install
+```
 
 ### 3. Set up environment variables
-    Create a `.env` file based on the `.env.example` file.
+
+Create a `.env` file based on the `.env.example` file.
 
 ### 4. Run database migrations
-    ```
-    npx prisma generate
-    npx prisma migrate dev
-    ```
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
 
 ### 5. Start the development server
-    ```
-    npm run dev
-    ```
+
+```bash
+npm run dev
+```
