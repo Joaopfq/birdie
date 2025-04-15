@@ -21,6 +21,7 @@
 - Image uploads
 - Interaction with posts (likes and comments)
 - Access to other users' profiles
+- Notifications for follow, likes and comments
 - Feed with the latest posts
 - Responsive interface with a modern design
 
